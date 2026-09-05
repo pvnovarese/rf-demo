@@ -18,7 +18,8 @@ services:
       - ./app:/app
 
   db:
-    image: postgres:15
+    #image: postgres:15
+    image: reg.mini.dev/postgres:15.19@sha256:b2d7f18493d5554eb66c942b75bf8519d1221bbfe8dbb7fe4b7db589114f0db5
     ports:
       - "5432:5432"
     environment:
