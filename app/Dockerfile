@@ -17,12 +17,6 @@ RUN --mount=type=secret,id=cg_username \
     --prefix=/install \
     -r requirements.txt
 
-#    CG_USER=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.stdin.read().strip(), safe=''))" < /run/secrets/cg_username) && \
-#    CG_PASS=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.stdin.read().strip(), safe=''))" < /run/secrets/cg_password) && \
-
-#    --index-url https://$(cat /run/secrets/cg_username):$(cat /run/secrets/cg_password)@libraries.cgr.dev/python-remediated/simple/ \
-#    --extra-index-url https://$(cat /run/secrets/cg_username):$(cat /run/secrets/cg_password)@libraries.cgr.dev/python/simple/ \
-
 FROM reg.mini.dev/python:3.14.7@sha256:44be0c48e9479a9cda05b4308503b2ca72c77f485b9f1626aadbdba92fe14b6e
 COPY --from=builder /install/lib/python3.14/site-packages /usr/lib/python3.14/site-packages
 WORKDIR /app
